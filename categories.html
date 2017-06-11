@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<title>Chuck Norris facts</title>
+		<link rel="stylesheet" type="text/css" href="stil.css">
+	</head>
+	<body>
+		<div class="topnav" id="myTopnav">
+			<a href="index.html">Home</a>
+			<a href="categories.tml">Categories</a>
+			<a href="search.html">Search</a>
+			<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+		</div>
+		<div class="content">
+			<div class="joke_place">
+				<h1><span class="joke"></span></h1>
+				<br />
+				<button id="animal" class="button"><span>Animal</span></button>
+				<button id="career" class="button"><span>Career</span></button>
+				<button id="celebrity" class="button"><span>Celebrity</span></button>
+				<button id="dev" class="button"><span>Dev</span></button>
+				<button id="explicit" class="button"><span>Explicit</span></button>
+				<button id="fashion" class="button"><span>Fashion</span></button>
+				<button id="food" class="button"><span>Food</span></button>
+				<button id="history" class="button"><span>History</span></button>
+				<button id="money" class="button"><span>Money</span></button>
+				<button id="movie" class="button"><span>Movie</span></button>
+				<button id="music" class="button"><span>Music</span></button>
+				<button id="political" class="button"><span>Political</span></button>
+				<button id="religion" class="button"><span>Religion</span></button>
+				<button id="science" class="button"><span>Science</span></button>
+				<button id="sport" class="button"><span>Sport</span></button>
+				<button id="travel" class="button"><span>Travel</span></button>
+			</div>
+		</div>
+		<div class="footer">
+		
+		</div>
+	</body>
+	<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script>
+		function myFunction(){
+			var x = document.getElementById("myTopnav");
+			if (x.className === "topnav") {
+				x.className += " responsive";
+			}
+			else{
+				x.className = "topnav";
+			}
+		}
+	</script>
+	<script>
+		
+	</script>
+	<script>
+		$(".button").click(function() { 
+			var kategorija = $(this).attr('id');
+			var url = 'https://api.chucknorris.io/jokes/random?category=' + kategorija;
+			
+			$.getJSON(url).then(function(response){
+				$('.joke').text(response.value);				
+			}); 
+		})
+	</script>
+</html>

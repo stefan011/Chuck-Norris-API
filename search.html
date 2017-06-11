@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<title>Chuck Norris facts</title>
+		<link rel="stylesheet" type="text/css" href="stil.css">
+	</head>
+	<body>
+		<div class="topnav" id="myTopnav">
+			<a href="index.html">Home</a>
+			<a href="categories.tml">Categories</a>
+			<a href="search.html">Search</a>
+			<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+		</div>
+		<div class="content">
+			<div class="joke_place">
+				<h1><span class="joke"></span></h1>
+				<form>
+					<input id="search" class="search" type="text" placeholder="Search...">
+				</form>
+			</div>
+		</div>
+		<div class="footer">
+		
+		</div>
+	</body>
+	<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script>
+		function myFunction(){
+			var x = document.getElementById("myTopnav");
+			if (x.className === "topnav") {
+				x.className += " responsive";
+			}
+			else{
+				x.className = "topnav";
+			}
+		}
+	</script>
+	<script>
+		$("#search").on('keyup', function apiCall(){ 
+        var q = $("#search").val();
+				var url = 'https://api.chucknorris.io/jokes/random?category=' + q;
+				
+				$.getJSON(url).then(function(response){
+					$('.joke').text(response.value);				
+				}); 
+			});
+	</script>
+</html>
